@@ -1,3 +1,5 @@
+<!-- manually coded calendar with no colours -->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +20,7 @@
   <!-- jQuery 3.6.0 -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <!-- HTML Calendar -->
-  <script src="./html-calendar.js"></script>
+  <script src="./calendar.js"></script>
   <style>
     th, td {
       text-align: center;
@@ -110,7 +112,145 @@
     <div class="album py-5 bg-light">
       <div class="container">
         <p class="text-center lead text-muted">You have <span id="days-left" style="text-decoration: underline;"></span><span style="text-decoration: underline;"> days</span> till your deadline (<span id='deadline-date'></span>).</p>
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 justify-content-center" id="insert-calendars">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 justify-content-center">
+          <div class="col">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <p class="text-center text-muted">August 2022</p>
+                <p class="card-text">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">S</th>
+                        <th scope="col">M</th>
+                        <th scope="col">T</th>
+                        <th scope="col">W</th>
+                        <th scope="col">T</th>
+                        <th scope="col">F</th>
+                        <th scope="col">S</th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                      <tr>
+                        <td></td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                      </tr>
+                      <tr>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>10</td>
+                        <td>11</td>
+                        <td>12</td>
+                        <td>13</td>
+                      </tr>
+                      <tr>
+                        <td>14</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>17</td>
+                        <td>18</td>
+                        <td>19</td>
+                        <td>20</td>
+                      </tr>
+                      <tr>
+                        <td>21</td>
+                        <td>22</td>
+                        <td>23</td>
+                        <td>24</td>
+                        <td>25</td>
+                        <td>26</td>
+                        <td>27</td>
+                      </tr>
+                      <tr>
+                        <td>28</td>
+                        <td>29</td>
+                        <td>30</td>
+                        <td>31</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <p class="text-center text-muted">September 2022</p>
+                <p class="card-text">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">S</th>
+                        <th scope="col">M</th>
+                        <th scope="col">T</th>
+                        <th scope="col">W</th>
+                        <th scope="col">T</th>
+                        <th scope="col">F</th>
+                        <th scope="col">S</th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                      </tr>
+                      <tr>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>10</td>
+                      </tr>
+                      <tr>
+                        <td>11</td>
+                        <td>12</td>
+                        <td>13</td>
+                        <td>14</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>17</td>
+                      </tr>
+                      <tr>
+                        <td>18</td>
+                        <td>19</td>
+                        <td>20</td>
+                        <td>21</td>
+                        <td>22</td>
+                        <td>23</td>
+                        <td>24</td>
+                      </tr>
+                      <tr>
+                        <td>25</td>
+                        <td>26</td>
+                        <td>27</td>
+                        <td>28</td>
+                        <td>29</td>
+                        <td>30</td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -170,8 +310,6 @@
         document.getElementById('deadline-date').textContent = deadline
         calculateDaysLeft()
         changeModalCloseButton()
-        addMonthsToDom()
-        addCalendarToDOM(compactCal)
       }
     }
     function modalChangeTargetWordCount() {
@@ -201,8 +339,10 @@
 
     function firstSetup() {
       localStorage.setItem('words-written', 0)
+      localStorage.setItem('days-passed', 0)
       localStorage.setItem('target-words', 50000)
       localStorage.setItem('daily-target', 900)
+      localStorage.setItem('last-date', '2022-08-01')
       localStorage.setItem('deadline', '2022-09-30')
       localStorage.setItem('headline', "Let's do this!")
       calculateDaysLeft()
@@ -223,6 +363,33 @@
       document.getElementById('days-left').textContent = diffDays
     }
 
+    function daysPassed() {
+      var date = new Date();
+      var dated = new Date(date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate())
+      var lastDate = new Date(localStorage.getItem('last-date'))
+      var diffTimed = Math.abs(dated - lastDate);
+      var diffDayss = Math.ceil(diffTimed / (1000 * 60 * 60 * 24));
+      var oldDaysPassed = localStorage.getItem('days-passed')
+      console.log(date);
+      console.log(localStorage);
+      console.log(dated);
+      console.log(lastDate);
+      console.log(diffTimed);
+      console.log(diffDayss);
+      console.log(oldDaysPassed);
+      
+      localStorage.setItem('days-passed', (parseInt(diffDayss) + parseInt(oldDaysPassed)))
+      localStorage.setItem('last-date', dated.getFullYear() + '-' + (dated.getMonth() + 1) + '-' + dated.getDate())
+      let tds = document.getElementsByTagName('td')
+      let newDaysPassed = parseInt(localStorage.getItem('days-passed'))
+      for (var i=0; i <= newDaysPassed; i++) {
+        if (tds[i].textContent != '') {
+          tds[i].classList.add('red')
+        }
+      }
+      tds[newDaysPassed+1].classList.add('green')
+    }
+    
     function addWords(newWords) {
       let words = localStorage.getItem('words-written')
       words = parseInt(words) + parseInt(newWords)
@@ -314,66 +481,21 @@
       $("#celebrate-btn").prop("disabled",false);
     }
 
-    function addMonthsToDom() {
-      let today = new Date()
-      let presentMonth = today.getMonth()
-      let deadlineMonth = parseInt(localStorage.getItem('deadline').split('-')[1])
-      let startYear = today.getFullYear()
-      let endYear = parseInt(localStorage.getItem('deadline').split('-')[0])
-      let monthsAdded = 0
-
-      // calculate total months
-      let totalMonths = 0
-      if (startYear === endYear) {
-        totalMonths = deadlineMonth - presentMonth
-      } else {
-        totalMonths = 12 + deadlineMonth - presentMonth
-      }
-
-      let outerDiv = document.getElementById('insert-calendars')
-
-      while (monthsAdded < totalMonths) {
-        let monYe = ''
-        if ((presentMonth+monthsAdded) % 12 >= presentMonth) {
-          monYe = startYear + '-' + (presentMonth + monthsAdded + 1) // +1 to adjust for array start from 0
-        } else {
-          monYe = endYear + '-' + ((presentMonth + monthsAdded)%12 + 1) // +1 to adjust for array start from 0
-        }
-        monthsAdded += 1
-        // check if the month is already in the DOM
-        if (mYArray.indexOf(monYe) === -1) {
-          mYArray.push(monYe)
-          let col = document.createElement('div')
-          let card = document.createElement('div')
-          card.classList.add('card', 'shadow-sm')
-          let calOuter = document.createElement('div')
-          calOuter.classList.add('html-calendar', 'card-body')
-          calOuter.setAttribute('id', monYe)
-          card.appendChild(calOuter)
-          col.appendChild(card)
-          outerDiv.appendChild(col)
-        }
-      }
-    }
-    
     // on each load
-    let compactCal = false
-    let mYArray = []
     var inputElements = document.getElementsByTagName("input");
     for (var ii=0; ii < inputElements.length; ii++) {
       inputElements[ii].value = "";
     }
-    if (localStorage.length < 5) { 
+    if (localStorage.length != 7) { 
       firstSetup()
     }
     document.getElementById('total-words').textContent = localStorage.getItem('target-words')
     document.getElementById('deadline-date').textContent = localStorage.getItem('deadline')
     document.getElementById('headline').textContent = localStorage.getItem('headline')
+    // daysPassed()
     updateWordCount()
     calculateProgress()
     calculateDaysLeft()
-    addMonthsToDom()
-    addCalendarToDOM(compactCal)
 
     document.querySelector("#word-count-input").addEventListener("keydown", event => {
       if(event.key === "Enter") {changeWordCount();}
@@ -390,13 +512,6 @@
     document.querySelector("#headline-input").addEventListener("keydown", event => {
       if(event.key === "Enter") {modalChangeHeadline();}
     });
-  </script>
-
-  <!-- Add colour to calendar -->
-  <script>
-    let today = new Date()
-    let table = document.getElementById('2022-8')
-    colorDates(table, [[1,today.getDate()-1,"red","white"],[today.getDate(), today.getDate(),"green","white"]])
   </script>
 </body>
 </html>

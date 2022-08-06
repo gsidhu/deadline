@@ -201,8 +201,10 @@
 
     function firstSetup() {
       localStorage.setItem('words-written', 0)
+      localStorage.setItem('days-passed', 0)
       localStorage.setItem('target-words', 50000)
       localStorage.setItem('daily-target', 900)
+      localStorage.setItem('last-date', '2022-08-01')
       localStorage.setItem('deadline', '2022-09-30')
       localStorage.setItem('headline', "Let's do this!")
       calculateDaysLeft()
@@ -363,7 +365,7 @@
     for (var ii=0; ii < inputElements.length; ii++) {
       inputElements[ii].value = "";
     }
-    if (localStorage.length < 5) { 
+    if (localStorage.length != 7) { 
       firstSetup()
     }
     document.getElementById('total-words').textContent = localStorage.getItem('target-words')
