@@ -122,7 +122,7 @@ function colorDates(table, specification) {
 function addCalendarToDOM(compactCal) {
   for (var calID of mYArray) {
     // check if given ID already has a generated calendar
-    if (!document.getElementById(calID).hasChildNodes()) {
+    if (document.getElementById(calID).childElementCount === 0) {
       let mY = calID.split('-')
       let generatedCal =  generateMonth(parseInt(mY[1]), parseInt(mY[0]), compactCal)
       document.getElementById(calID).appendChild(generatedCal[1])
