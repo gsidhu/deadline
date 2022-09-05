@@ -200,6 +200,7 @@
 
   <script>
     function modalChangeDeadline() {
+      colorDeadlineDate(0)
       let deadline = document.getElementById('deadline-input').value
       if (deadline.match(/\d{4}-\d{2}-\d{2}/)) {
         localStorage.setItem('deadline', deadline)
@@ -208,6 +209,7 @@
         changeModalCloseButton()
         addMonthsToDom()
         addCalendarToDOM(compactCal)
+        colorDeadlineDate(1)
       }
     }
     function modalChangeTargetWordCount() {
@@ -470,6 +472,20 @@
     let today = new Date()
     let table = document.getElementsByClassName('html-calendar')[0]
     colorDates(table, [[1,today.getDate()-1,"red","white"],[today.getDate(), today.getDate(),"green","white"]])
+
+    function colorDeadlineDate(on) {
+      // colour deadline date
+      let deadlineDate = localStorage.getItem('deadline')
+      let items = deadlineDate.split('-')
+      if (items[1][0] === "0") { items[1] = items[1][1]}
+      if (items[2][0] === "0") { items[2] = items[2][1]}
+      deadlineDate = items[0] + "-" + items[1] + "-" + items[2]
+      let el = document.getElementsByClassName(deadlineDate)[0]
+      if (on) { el.style.backgroundColor = "gainsboro" }
+      else { el.style.backgroundColor = "white" }
+    }
+
+    colorDeadlineDate(1)
   </script>
 </body>
 </html>
