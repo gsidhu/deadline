@@ -16,7 +16,12 @@ export const wordsWritten = writable(storedwordsWritten || 0)
 export const wordsOrPages = writable(storedwordsOrPages || "words")
 export const totalWords = writable(storedtotalWords || 5000)
 export const dailyTarget = writable(storeddailyTarget || 1000)
-export const deadlineDate = writable(storeddeadlineDate || "2022-10-30")
+
+// Set the default deadline to 50 days from now.
+let daysInMs = 50 * 24 * 60 * 60 * 1000;
+let deadline = Date.now() + daysInMs;
+let defaultDeadline = new Date(deadline).toISOString().slice(0, 10);
+export const deadlineDate = writable(storeddeadlineDate || defaultDeadline)
 export const headline = writable(storedheadline || "Let's do this!")
 export const readOrWrite = writable(storedreadOrWrite || "write")
 

@@ -1,7 +1,6 @@
 <script>
   import {headline} from '../stores'
   export let openModal = false
-
 </script>
 
 <!-- Header -->
@@ -10,10 +9,8 @@
     <div class="container">
       <div href="#" class="navbar-brand d-flex align-items-center">
         <div>
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-mortarboard mx-2" viewBox="0 0 16 16"><path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5ZM8 8.46 1.758 5.965 8 3.052l6.242 2.913L8 8.46Z"/><path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466 4.176 9.032Zm-.068 1.873.22-.748 3.496 1.311a.5.5 0 0 0 .352 0l3.496-1.311.22.748L8 12.46l-3.892-1.556Z"/></svg>
-        </div>
-        <div>
-          <span style="text-align: center;"><strong id="headline">{$headline}</strong></span>
+          <!-- <span style="text-align: center;"><strong id="headline">{$headline}</strong></span> -->
+          <input id="headline-input" type="text" placeholder="{$headline}" bind:value="{$headline}" on:click={(el) => el.target.select()}>
         </div>
       </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="modal" data-bs-target="#settingsModal" aria-label="Open modal" on:click={openModal = !openModal}>
@@ -25,3 +22,10 @@
     </div>
   </div>
 </header>
+
+<style>
+  #headline-input {
+    all: unset;
+    font-weight: 500;
+  }
+</style>

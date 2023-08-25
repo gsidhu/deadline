@@ -63,24 +63,10 @@
 
   $: progressDone = 100*parseInt($wordsWritten) / parseInt($totalWords)
   $: progressLeft = (100 - progressDone > 0) ? 100 - progressDone : 0
-
-  let readOrWritten = 'written'
-  $: if ($readOrWrite === 'write') {
-    readOrWritten = 'written'
-  } else {
-    readOrWritten = 'read'
-  }
-
-  let wordOrPage = 'word'
-  $: if ($wordsOrPages === 'words') {
-    wordOrPage = 'word'
-  } else {
-    wordOrPage = 'page'
-  }
 </script>
 
 <main>
-  <Header openModal={showModal}/>
+  <Header openModal={showModal} />
   <!-- Hero container -->
   <section class="py-3 text-center container">
     <div class="row py-lg-4">
@@ -109,9 +95,9 @@
         {/if}
 
         {#if (100 - progressDone > 0) }
-        <p id="words-msg" class="lead text-muted py-2">You have {readOrWritten} {$wordsWritten} {$wordsOrPages} so far and have {wordsLeft} {$wordsOrPages} left out of {$totalWords}.</p>
+        <p id="words-msg" class="lead text-muted py-2">You have finished {$wordsWritten} {$wordsOrPages} so far and have {wordsLeft} {$wordsOrPages} left out of {$totalWords}.</p>
         {:else}
-        <p id="words-msg" class="lead text-muted py-2">You have {readOrWritten} {$wordsWritten} {$wordsOrPages} so far, which is {$wordsWritten - $totalWords} {$wordsOrPages} more than your target of {$totalWords}!</p>
+        <p id="words-msg" class="lead text-muted py-2">You have finished {$wordsWritten} {$wordsOrPages} so far, which is {$wordsWritten - $totalWords} {$wordsOrPages} more than your target of {$totalWords}!</p>
         {/if}
       </div>
     </div>
@@ -127,7 +113,7 @@
           </form>
         </div>
         {:else}
-        <button id="change-word-count-btn" class="btn btn-primary mx-2" on:click={changeWordCount}>Change {wordOrPage} count</button>
+        <button id="change-word-count-btn" class="btn btn-primary mx-2" on:click={changeWordCount}>Change count</button>
         {/if}
       </div>
       <div class="col my-1 align-self-center">
@@ -138,7 +124,7 @@
 
   <Calendar {daysLeft} />
 
-  <Modal open={showModal} />
+  <Modal open={showModal} {daysLeft} />
 
   <Footer />
 </main>

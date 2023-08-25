@@ -1,1 +1,5 @@
 .DS_Store
+*.min.js
+*.min.css
+*.min.js.map
+*.min.css.map
